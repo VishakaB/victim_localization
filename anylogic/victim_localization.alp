@@ -414,6 +414,18 @@ import java.util.*;]]></Import>
 						<Type><![CDATA[int]]></Type>        
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1637411405634</Id>
+					<Name><![CDATA[nbcollision]]></Name>
+					<X>-1050</X><Y>-30</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+					</Properties>
+				</Variable>
 				<Variable Class="Parameter">
 					<Id>1611406082121</Id>
 					<Name><![CDATA[requiredEmergCalls]]></Name>
@@ -524,7 +536,7 @@ import java.util.*;]]></Import>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[15000]]></Code>
+							<Code><![CDATA[5000]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1611406082135</Id>
@@ -1713,6 +1725,21 @@ import java.util.*;]]></Import>
 					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
 						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
 						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[String]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1637411413756</Id>
+					<Name><![CDATA[collision]]></Name>
+					<X>-810</X><Y>-30</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[Double]]></ElementClass>
 						<ValueElementClass><![CDATA[String]]></ValueElementClass>
 					</Properties>
 
@@ -4171,6 +4198,18 @@ import java.util.*;]]></Import>
 					<Properties>	
 					</Properties>	
 				</StatechartElement>
+				<StatechartElement Class="State" ParentState="ROOT_NODE">
+					<Id>1637410935695</Id>
+					<Name><![CDATA[checking]]></Name>
+					<X>610</X><Y>80</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties Width="100" Height="30">
+						<FillColor/>
+					</Properties>
+				</StatechartElement>
 				<StatechartElement Class="EntryPoint" ParentState="ROOT_NODE">
 					<Id>1611477531242</Id>
 					<Name><![CDATA[SwitchOn]]></Name>
@@ -4266,18 +4305,12 @@ for(int i=0;i<getConnectionsNumber();i++)
 //if the phones were not correctly identified as incoverage, setting their information correctly			
 for(int i = 0;i<main.gNBs.size();i++)
 	{
-	     distanceFromBS = Math.pow(Math.pow(main.gNBs.get(i).locx - Location_phoneX,2) + Math. pow(main.gNBs.get(i).locy -Location_phoneY,2),0.5);
-	     
-		     //if( distanceFromBS<=main.radius)
-			   {
-			     //this.connectTo(main.gNBs.get(i)); inCoverage=true;main.nbICrelayers++; color = yellow;mygNB =i;
-			     //main.incoverage_ids.add(id);
-			   }
-			 	
-		 	cost231_pathloss_dbm = 46.3+33.9*Math.log10(885)-13.82*Math.log10(100)-2.69+(44.9-6.55*Math.log10(3))*Math.log10(distanceFromBS)+0;
-		 	rssidBm = 300 - cost231_pathloss_dbm;
-	        rssidBm_watts = Math.pow(10,(rssidBm-30)/10);
-		 	rssiArray.add(rssidBm_watts); 	
+	    distanceFromBS = Math.pow(Math.pow(main.gNBs.get(i).locx - Location_phoneX,2) + Math. pow(main.gNBs.get(i).locy -Location_phoneY,2),0.5);
+	     			 	
+	 	cost231_pathloss_dbm = 46.3+33.9*Math.log10(885)-13.82*Math.log10(100)-2.69+(44.9-6.55*Math.log10(3))*Math.log10(distanceFromBS)+0;
+	 	rssidBm = 300 - cost231_pathloss_dbm;
+        rssidBm_watts = Math.pow(10,(rssidBm-30)/10);
+	 	rssiArray.add(rssidBm_watts); 	
 	}
 	 	
 rssiWatts_max = Collections.max(rssiArray);	]]></Action>
@@ -4673,48 +4706,6 @@ buffer_tr.remove(arrayKeys[0]);]]></Action>
 						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
 					</Properties>	
 				</StatechartElement>
-				<StatechartElement Class="Transition" ParentState="startReception2" ParentStateId="1611477531234">
-					<Id>1611513327126</Id>
-					<Name><![CDATA[transition2]]></Name>
-					<X>330</X><Y>240</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>0</X><Y>38</Y></Point>
-					</Points>
-					<IconOffset>20.0</IconOffset>
-					<Properties Source="1611477531234" Target="1611477531234" Trigger="timeout">
-						<Action><![CDATA[String[] arrayKeys = buffer_tr.keySet().toArray( new String[buffer_tr.size()]);
-		
-if(buffer_tr.get(arrayKeys[0])<=time(SECOND))
-	{
-		deadline = 0;
-		flag_l = false;
-	}
-else
-	{		
-		deadline = buffer_tr.get(arrayKeys[0])-time(SECOND);
-		flag_l = true;	
-	}]]></Action>
-						<Timeout Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
-						</Timeout>
-						<Condition><![CDATA[true]]></Condition>
-						<Rate Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="RateUnits"><![CDATA[PER_SECOND]]></Unit>
-						</Rate>
-						<MessageType><![CDATA[Object]]></MessageType>
-						<DefaultTransition>true</DefaultTransition>
-						<FilterType><![CDATA[unconditionally]]></FilterType>
-						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
-						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
-					</Properties>	
-				</StatechartElement>
 				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
 					<Id>1611565175086</Id>
 					<Name><![CDATA[relayListening1]]></Name>
@@ -4838,8 +4829,7 @@ if(message[0].equals("emergency"))
 		buffer_rssi.put(message[1],message[3]);
 		buffer_msgid.put(message[1],message[2]);
 		buffer_relayid.put(message[1],message[4]);
-		
-		//System.out.println("rssi ratio:" +(Double.valueOf(message[3])/rssiWatts_max));
+
 		main.rssi_ratio.add(Double.valueOf(message[3])/rssiWatts_max);	
 	}
 	
@@ -4897,108 +4887,6 @@ for(int k=0;k<buffer_nbrelayers.size();k++)
 						<Rate Class="CodeUnitValue">
 							<Code><![CDATA[1]]></Code>
 							<Unit Class="RateUnits"><![CDATA[PER_SECOND]]></Unit>
-						</Rate>
-						<MessageType><![CDATA[Object]]></MessageType>
-						<DefaultTransition>true</DefaultTransition>
-						<FilterType><![CDATA[unconditionally]]></FilterType>
-						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
-						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
-					</Properties>	
-				</StatechartElement>
-				<StatechartElement Class="Transition" ParentState="Relaying2" ParentStateId="1611477531232">
-					<Id>1611566896995</Id>
-					<Name><![CDATA[Tmax_update6]]></Name>
-					<X>460</X><Y>410</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>0</X><Y>38</Y></Point>
-					</Points>
-					<IconOffset>20.0</IconOffset>
-					<Properties Source="1611477531232" Target="1611477531232" Trigger="timeout">
-						<Action><![CDATA[nbmins++;
-TmaxDynamicCalc();
-nbcalls =0;
-congestion_min=0;]]></Action>
-						<Timeout Class="CodeUnitValue">
-							<Code><![CDATA[main.timeRelaying]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
-						</Timeout>
-						<Condition><![CDATA[true]]></Condition>
-						<Rate Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="RateUnits"><![CDATA[PER_MINUTE]]></Unit>
-						</Rate>
-						<MessageType><![CDATA[Object]]></MessageType>
-						<DefaultTransition>true</DefaultTransition>
-						<FilterType><![CDATA[unconditionally]]></FilterType>
-						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
-						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
-					</Properties>	
-				</StatechartElement>
-				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
-					<Id>1611566905441</Id>
-					<Name><![CDATA[Tmax_update7]]></Name>
-					<X>450</X><Y>362</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>0</X><Y>-39</Y></Point>
-					</Points>
-					<IconOffset>20.0</IconOffset>
-					<Properties Source="1611477531230" Target="1611477531230" Trigger="timeout">
-						<Action><![CDATA[nbmins++;
-TmaxDynamicCalc();
-nbcalls =0;
-congestion_min=0;]]></Action>
-						<Timeout Class="CodeUnitValue">
-							<Code><![CDATA[main.timeRelaying]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
-						</Timeout>
-						<Condition><![CDATA[true]]></Condition>
-						<Rate Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="RateUnits"><![CDATA[PER_MINUTE]]></Unit>
-						</Rate>
-						<MessageType><![CDATA[Object]]></MessageType>
-						<DefaultTransition>true</DefaultTransition>
-						<FilterType><![CDATA[unconditionally]]></FilterType>
-						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
-						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
-					</Properties>	
-				</StatechartElement>
-				<StatechartElement Class="Transition" ParentState="startReception2" ParentStateId="1611477531234">
-					<Id>1611566912619</Id>
-					<Name><![CDATA[Tmax_update8]]></Name>
-					<X>450</X><Y>240</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>0</X><Y>38</Y></Point>
-					</Points>
-					<IconOffset>20.0</IconOffset>
-					<Properties Source="1611477531234" Target="1611477531234" Trigger="timeout">
-						<Action><![CDATA[nbmins++;
-TmaxDynamicCalc();
-nbcalls =0;
-congestion_min=0;]]></Action>
-						<Timeout Class="CodeUnitValue">
-							<Code><![CDATA[main.timeRelaying]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
-						</Timeout>
-						<Condition><![CDATA[true]]></Condition>
-						<Rate Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="RateUnits"><![CDATA[PER_MINUTE]]></Unit>
 						</Rate>
 						<MessageType><![CDATA[Object]]></MessageType>
 						<DefaultTransition>true</DefaultTransition>
@@ -5075,10 +4963,10 @@ congestion_min=0;]]></Action>
 						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
 					</Properties>	
 				</StatechartElement>
-				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
-					<Id>1611566946163</Id>
-					<Name><![CDATA[Tmax_update11]]></Name>
-					<X>320</X><Y>118</Y>
+				<StatechartElement Class="Transition" ParentState="EmergencyCallReceived2" ParentStateId="1611477531230">
+					<Id>1611656131442</Id>
+					<Name><![CDATA[transition3]]></Name>
+					<X>330</X><Y>323</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5088,46 +4976,12 @@ congestion_min=0;]]></Action>
 						<Point><X>0</X><Y>39</Y></Point>
 					</Points>
 					<IconOffset>20.0</IconOffset>
-					<Properties Source="1611477531226" Target="1611477531226" Trigger="timeout">
-						<Action><![CDATA[nbmins++;
-TmaxDynamicCalc();
-nbcalls =0;
-congestion_min=0;]]></Action>
-						<Timeout Class="CodeUnitValue">
-							<Code><![CDATA[main.timeRelaying]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
-						</Timeout>
-						<Condition><![CDATA[true]]></Condition>
-						<Rate Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="RateUnits"><![CDATA[PER_MINUTE]]></Unit>
-						</Rate>
-						<MessageType><![CDATA[Object]]></MessageType>
-						<DefaultTransition>true</DefaultTransition>
-						<FilterType><![CDATA[unconditionally]]></FilterType>
-						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
-						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
-					</Properties>	
-				</StatechartElement>
-				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
-					<Id>1611656131442</Id>
-					<Name><![CDATA[transition3]]></Name>
-					<X>330</X><Y>362</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>0</X><Y>-39</Y></Point>
-					</Points>
-					<IconOffset>20.0</IconOffset>
 					<Properties Source="1611477531230" Target="1611477531230" Trigger="timeout">
 						<Action><![CDATA[String[] arrayKeys = buffer_tr.keySet().toArray( new String[buffer_tr.size()]);
 		
 if(buffer_tr.get(arrayKeys[0])<=time(SECOND))
 	{
-		deadline = 0;
+		deadline = uniform(0,1);//adding a random timeout to avoid collisions
 		flag_l = false;
 	}
 else
@@ -5171,6 +5025,57 @@ else
 							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
 						</Timeout>
 						<Condition><![CDATA[main.totalEmergCalls>=(main.requiredEmergCalls)]]></Condition>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_SECOND]]></Unit>
+						</Rate>
+						<MessageType><![CDATA[Object]]></MessageType>
+						<DefaultTransition>true</DefaultTransition>
+						<FilterType><![CDATA[unconditionally]]></FilterType>
+						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
+						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
+					</Properties>	
+				</StatechartElement>
+				<StatechartElement Class="EntryPoint" ParentState="ROOT_NODE">
+					<Id>1637410935731</Id>
+					<Name><![CDATA[checkingCongestion]]></Name>
+					<X>640</X><Y>40</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>0</X><Y>40</Y></Point>
+					</Points>
+					<Properties Target="1637410935695">
+					</Properties>	
+				</StatechartElement>
+				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
+					<Id>1637410935733</Id>
+					<Name><![CDATA[transition7]]></Name>
+					<X>630</X><Y>110</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>20</X><Y>40</Y></Point>
+						<Point><X>50</X><Y>0</Y></Point>
+					</Points>
+					<IconOffset>20.0</IconOffset>
+					<Properties Source="1637410935695" Target="1637410935695" Trigger="timeout">
+						<Action><![CDATA[nbmins++;
+TmaxDynamicCalc();
+nbcalls =0;
+congestion_min=0;
+//System.out.println("!!!!!!!");]]></Action>
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[main.timeRelaying]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						</Timeout>
+						<Condition><![CDATA[true]]></Condition>
 						<Rate Class="CodeUnitValue">
 							<Code><![CDATA[1]]></Code>
 							<Unit Class="RateUnits"><![CDATA[PER_SECOND]]></Unit>
@@ -5241,10 +5146,19 @@ else
 if(!inCoverage)
 	{	
 		color=green;
-		if(!alreadyrelayed.contains("emergency"+";"+ arrayKeys[0]+";"+buffer_msgid.get(arrayKeys[0]) +";"+ String.valueOf(rssiWatts_max)) && nbrelayers<(main.max_rs_th-buffer_tr.size()))
+		if(!alreadyrelayed.contains("emergency"+";"+ arrayKeys[0]+";"+buffer_msgid.get(arrayKeys[0]) +";"+ time(SECOND)) && nbrelayers<(main.max_rs_th-buffer_tr.size()))
 			{   
-				alreadyrelayed.add("emergency"+";"+ arrayKeys[0]+";"+buffer_msgid.get(arrayKeys[0]) +";"+ String.valueOf(rssiWatts_max));
+				alreadyrelayed.add("emergency"+";"+ arrayKeys[0]+";"+buffer_msgid.get(arrayKeys[0]) +";"+ time(SECOND));
 			
+				//collision detection
+				if(main.collision.get(time(SECOND))!=null)
+					{
+						String h = this.id+";"+main.collision.get(time(SECOND));
+						main.nbcollision++;
+						System.out.println(":h "+main.nbcollision);	
+						main.collision.put(time(SECOND),h);
+					}
+					
 				sendToAllConnected("emergency"+";"+ arrayKeys[0]+";"+buffer_msgid.get(arrayKeys[0]) +";"+ String.valueOf(rssiWatts_max)+";"+String.valueOf(id));
 	  			double time_of_relaying = time(SECOND);
 				if(!main.EmergCallReachedgNBTime.containsKey(arrayKeys[0]))
@@ -5564,6 +5478,11 @@ return dist_est;]]></Body>
 						<PackageName><![CDATA[am_help_with_buffer_tr]]></PackageName>
 						<ClassName><![CDATA[phone]]></ClassName>
 						<ItemName><![CDATA[SwitchOn]]></ItemName>
+					</StatechartReference>
+					<StatechartReference>
+						<PackageName><![CDATA[am_help_with_buffer_tr]]></PackageName>
+						<ClassName><![CDATA[phone]]></ClassName>
+						<ItemName><![CDATA[checkingCongestion]]></ItemName>
 					</StatechartReference>
 					<DrawLine>true</DrawLine>
 					<LineStyle>SOLID</LineStyle>
@@ -8806,30 +8725,30 @@ return dist_est;]]></Body>
 					<Properties Width="100" Height="30">
 						<EntryAction><![CDATA[int iter = 2;//starting data row  in excel
 
-for(int i=0;i<main.nbpaths_time.size();i++)
+//for(int i=0;i<main.nbpaths_time.size();i++)
 	{	
-		String r = main.nbpaths_time.get(i);
-		String[] rsplit = r.split(" ");
+	//	String r = main.nbpaths_time.get(i);
+		//String[] rsplit = r.split(" ");
 		
-		if(!rsplit[9].equals("6.28"))
+	//	if(!rsplit[9].equals("6.28"))
 			{
 				//System.out.println("r: "+r);
 			}
-		write_vishaka(iter,rsplit[1],rsplit[2],rsplit[3],rsplit[4],rsplit[5],rsplit[6],rsplit[7],rsplit[8],rsplit[9],rsplit[10],rsplit[11],rsplit[12],rsplit[13],rsplit[14],rsplit[15]);
-		iter++;
+		//write_vishaka(iter,rsplit[1],rsplit[2],rsplit[3],rsplit[4],rsplit[5],rsplit[6],rsplit[7],rsplit[8],rsplit[9],rsplit[10],rsplit[11],rsplit[12],rsplit[13],rsplit[14],rsplit[15]);
+		//iter++;
 	}
-iter=2;
-for(int i=0;i<main.gnbpaths_time.size();i++)
+//iter=2;
+//for(int i=0;i<main.gnbpaths_time.size();i++)
 	{	
-		String gr = main.gnbpaths_time.get(i);
+	//	String gr = main.gnbpaths_time.get(i);
 		
-		String[] grsplit = gr.split(" ");
-		if(!grsplit[9].equals("6.28"))
+		//String[] grsplit = gr.split(" ");
+		//if(!grsplit[9].equals("6.28"))
 			{
 				//System.out.println("gr: "+gr);
 			}
-		write_gcsp(iter,grsplit[1],grsplit[2],grsplit[3],grsplit[4],grsplit[5],grsplit[6],grsplit[7],grsplit[8],grsplit[9],grsplit[10],grsplit[11],grsplit[12],grsplit[13],grsplit[14],grsplit[15]);
-		iter++;
+		//write_gcsp(iter,grsplit[1],grsplit[2],grsplit[3],grsplit[4],grsplit[5],grsplit[6],grsplit[7],grsplit[8],grsplit[9],grsplit[10],grsplit[11],grsplit[12],grsplit[13],grsplit[14],grsplit[15]);
+		//iter++;
 	}]]></EntryAction>
 						<FillColor/>
 					</Properties>

@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib.font_manager
+import matplotlib.font_manager as fontmanager
 time =('100-300', '1000-2000', '2000-3000')
 
 avg_seq= (18.62336991,22.45711697,21.91932224)
@@ -39,8 +40,9 @@ plt.legend()
 
 import matplotlib.font_manager as fontmanager
 
-font = font_manager.FontProperties(style='normal',
-                                   family='Arial', size=12)
+import matplotlib.font_manager as font_manager
+font = font_manager.FontProperties(family='Arial',
+                                   style='normal', size=12)
 ax1.legend(prop=font)
 plt.legend(fontsize=9) # using a size in points
 ax1.tick_params(axis='both', which='major', labelsize=14)
@@ -55,8 +57,8 @@ for tick in ax1.get_yticklabels():
 
 plt.xlabel(r"number of emergency devices localized",fontname="Arial",fontsize=14)
 plt.ylabel(r"average distance error (m)",fontname="Arial",fontsize=14)
-ax1.set_title("Average distance error against number of devices localized" , fontname="Arial", fontsize=14)
-
+# ax1.set_title("Average distance error against number of devices localized" , fontname="Arial", fontsize=14)
+ax1.set_xlim(0, 2)  # most of the data
 d = .015  # how big to make the diagonal lines in axes coordinates
 ax1.set_ylim(140, 600)  # most of the data
 

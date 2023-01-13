@@ -213,11 +213,11 @@ for tick in ax1.get_yticklabels():
     tick.set_fontname("Arial")
 
 ax1.set_ylim(150.0, 230.5)
-#ax1.set_ylim(25.0, 473.5)  # most of the data
+ax1.set_xlim(121.0, 2108)  # most of the data
 ax1.tick_params(axis='both', which='major', labelsize=14)
 plt.text(1000,190,'# emergency devices: 340',fontsize=13,fontname="Arial")
 plt.text(1000,183,'emergency duration: 30 mins',fontsize=13,fontname="Arial")
 plt.xlabel(r"time (sec)",fontname="Arial",fontsize=14)
 plt.ylabel(r"average distance error (m)",fontname="Arial",fontsize=14)
-ax1.set_title("Average distance error against time" , fontname="Arial", fontsize=14)
+# ax1.set_title("Average distance error against time" , fontname="Arial", fontsize=14)
 plt.show()

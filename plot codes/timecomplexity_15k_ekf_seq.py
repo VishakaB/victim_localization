@@ -118,32 +118,17 @@ ax1.plot(time, seq_ord,linestyle='dashed',color="blue")
 #ax1.plot(noc, success_rate15k,marker="*",color="black",linestyle='dotted')
 #ax1.set_ylim(-10,100000)
 
-
-#limits
-
-
-#ax1.set_xlim(0.1,81)
-
 ax1.grid(color='gray', alpha=0.5, linestyle='dashed', linewidth=0.5)
-#ax2.grid(color='gray', alpha=0.5, linestyle='dashed', linewidth=0.5)
-#saving and showing fig
-
 
 #legend
 lns1 = ax1.plot(time, ord, color="orchid",  marker="p",linestyle='dotted', markersize=10,label=r'$MVLA_{recent}(15k UEs)$')
 lns2 = ax1.plot(time, seq_ord, color="forestgreen",linestyle='dashed', marker="*", markersize=7, label=r'$MVLA_{seq} (15k UEs)$')
-#lns3 = ax1.plot(time, seq, color="red", marker="o", markersize=7, label='Sequential (only recent data) (5000 UEs)')
 lns3 = ax1.plot(time, apd, color="navy", marker="o", markersize=7, label=r'$MVLA_{all} (15k UEs)$')
-#lns4 = ax1.plot(time, ekf, color="sandybrown", marker="P", markersize=7, label='EKF (15k UEs)')
 
 lns = lns1+lns2+lns3
 
-#+lns4
-#lns1++lns4
-#
 labs = [l.get_label() for l in lns]
 ax1.legend(lns, labs, loc=2, fontsize=10)
-
 
 for i in range(len(time)):
     my_selected_date = time[i]
@@ -154,12 +139,8 @@ ax1.axvline(x=time[0],ymin=-0.0, ymax=ekf[0]+0.03 ,label='localization update ti
 #ax1.legend(loc=4, fontsize=10)
 ax1.legend(loc=2, fontsize=10)
 import matplotlib.font_manager as font_manager
-font = font_manager.FontProperties(family='Arial',
-                                   style='normal', size=12)
+font = font_manager.FontProperties(family='Arial', style='normal', size=12)
 ax1.legend(prop=font)
-
-#+lns3+lns4+lns5+lns6
-#+lns3+lns4
 
 #labels
 
@@ -174,13 +155,14 @@ ax1.tick_params(axis='both', which='major', labelsize=14)
 plt.yscale('log')
 from matplotlib import ticker
 ax1.set_ylim(-100,400000)
+ax1.set_xlim(120,2176)
 formatter = ticker.ScalarFormatter(useMathText=True)
 formatter.set_scientific(True)
 formatter.set_powerlimits((-0,7))
 ax1.yaxis.set_major_formatter(formatter)
-plt.text(100,110000.0,'# emergency devices: 340',fontsize=13,fontname="Arial")
-plt.text(100,50000.0,'emergency duration: 30 mins',fontsize=13,fontname="Arial")
+plt.text(200,110000.0,'# emergency devices: 340',fontsize=13,fontname="Arial")
+plt.text(200,50000.0,'emergency duration: 30 mins',fontsize=13,fontname="Arial")
 plt.xlabel(r"time (sec)",fontname="Arial",fontsize=14)
 plt.ylabel(r"algorithm complexity",fontname="Arial",fontsize=14)
-ax1.set_title("Algorithm complexity against time" , fontname="Arial", fontsize=14)
+# ax1.set_title("Algorithm complexity against time" , fontname="Arial", fontsize=14)
 plt.show()

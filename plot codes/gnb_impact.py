@@ -34,7 +34,7 @@ for tick in ax1.get_xticklabels():
 for tick in ax1.get_yticklabels():
     tick.set_fontname("Arial")
 ax1.set_ylim(190.0, 270)  # most of the data
-ax1.set_xlim(0.5, 10.5)  # most of the data
+ax1.set_xlim(1, 10)  # most of the data
 ax1.tick_params(axis='both', which='major', labelsize=14)
 plt.text(1.5,200.0,'# emergency devices: 340',fontsize=13,fontname="Arial")
 plt.text(1.5,205.0,'emergency duration: 30 mins',fontsize=13,fontname="Arial")

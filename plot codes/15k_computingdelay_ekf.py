@@ -48,7 +48,7 @@ for tick in ax1.get_yticklabels():
 #plt.yticks(range(1, 1000000, 2000000), [1,1000,10000,100000,1000000])
 plt.xlabel(r"number of emergency devices localized",fontname="Arial",fontsize=14)
 plt.ylabel(r"computing delay (sec)",fontname="Arial",fontsize=14)
-ax1.set_title("Computing delay against the number of localized devices" , fontname="Arial", fontsize=14)
+# ax1.set_title("Computing delay against the number of localized devices" , fontname="Arial", fontsize=14)
 #ax2.set_ylabel(r"average messages per node (Dr)",fontsize=14)
 d = .015  # how big to make the diagonal lines in axes coordinates
 plt.yscale('log')
@@ -56,9 +56,10 @@ plt.yscale('log')
 
 from matplotlib import ticker
 ax1.set_ylim(-1000,200)
+ax1.set_xlim(0,2)
 formatter = ticker.ScalarFormatter(useMathText=True)
 #formatter.set_scientific(True)
 formatter.set_powerlimits((-5,10))
 ax1.yaxis.set_major_formatter(formatter)
-
+plt.text(1,0.005,'emergency duration: 30 mins',fontsize=13,fontname="Arial")
 plt.show()

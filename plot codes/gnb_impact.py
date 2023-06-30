@@ -2,7 +2,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 from matplotlib import rc
-from matplotlib.ticker import AutoMinorLocator
 import matplotlib.font_manager as font_manager
 
 rc('mathtext', default='regular')
@@ -17,8 +16,8 @@ f, ax1 = plt.subplots()
 ax1.grid(color='gray', alpha=0.5, linestyle='dashed', linewidth=0.5)
 
 #legend
-lns1 = ax1.plot(time, proposed, color="navy",marker="p", markersize=7, label=r'${MVLA}_{all} (15k UEs)$')
-lns2 = ax1.plot(time, rssimcl ,color="saddlebrown",marker="d",linestyle='dashed', markersize=7,  label=r'${RSSI-MCL} (15k UEs)$')
+lns1 = ax1.plot(time, proposed, color="navy",marker="p", markersize=7, label=r'${MVLA}_{all}$ (15k UEs)')
+lns2 = ax1.plot(time,rssimcl,color="saddlebrown",marker="d",linestyle='dashed', markersize=7,  label=r'${RSSI-MCL}$ (15k UEs)')
 lns = lns1+lns2
 labs = [l.get_label() for l in lns]
 
@@ -40,5 +39,4 @@ plt.text(1.5,200.0,'# emergency devices: 340',fontsize=13,fontname="Arial")
 plt.text(1.5,205.0,'emergency duration: 30 mins',fontsize=13,fontname="Arial")
 plt.xlabel(r"number of functioning gNBs",fontname="Arial",fontsize=14)
 plt.ylabel(r"average distance error (m)",fontname="Arial",fontsize=14)
-#ax1.set_title("Average distance error against time", fontname="Arial", fontsize=14)
 plt.show()

@@ -49,7 +49,7 @@ for tick in ax1.get_yticklabels():
 #plt.yticks(range(0, 80, 20), [0,10,50,80])
 plt.xlabel(r"number of emergency devices localized",fontname="Arial",fontsize=14)
 plt.ylabel(r"root mean square error (m)",fontname="Arial",fontsize=14)
-ax1.set_title("Root mean squared error against number of devices localized" , fontname="Arial", fontsize=14)
+# ax1.set_title("Root mean squared error against number of devices localized" , fontname="Arial", fontsize=14)
 #ax2.set_ylabel(r"average messages per node (Dr)",fontsize=14)
 d = .015  # how big to make the diagonal lines in axes coordinates
 ax1.set_ylim(12, 70)  # most of the data

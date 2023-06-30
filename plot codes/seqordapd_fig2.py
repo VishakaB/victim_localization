@@ -175,7 +175,7 @@ ax1.grid(color='gray', alpha=0.5, linestyle='dashed', linewidth=0.5)
 #legend
 lns1 = ax1.plot(time, ord, color="orchid",marker="p", markersize=7, label='$MVLA_{recent}$ (15k UEs)')
 #lns2 = ax1.plot(time, onlycellular,color="black",marker="d", markersize=7,  label='RSSI+TOA+AOA (15k UEs)')
-lns3 = ax1.plot(time, seq,color="forestgreen",marker="*", markersize=7, label='$MVLA_{recents-seq}$ (15k UEs)')
+lns3 = ax1.plot(time, seq,color="forestgreen",marker="*", markersize=7, label='$MVLA_{seq}$ (15k UEs)')
 lns4 = ax1.plot(time, apd, color="navy", marker="o", markersize=7,  label='$MVLA_{all}$ (15k UEs)')
 
 ax1.plot(time,minapd,linestyle='dotted',color="navy")

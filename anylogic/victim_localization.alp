@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.7.8.202111151814" AlpVersion="8.7.2">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.8.3.202304281216" AlpVersion="8.7.7">
 <Model>
 	<Id>1611404922978</Id>
 	<Name><![CDATA[victim_localization]]></Name>
@@ -16,7 +16,6 @@
 		<ActiveObjectClass>
 			<Id>1611404922984</Id>
 			<Name><![CDATA[Main]]></Name>
-			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
 			<Import><![CDATA[import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -44,7 +43,6 @@ import java.util.*;]]></Import>
 			<SceneBackgroundColor/>
 			<SceneSkybox>null</SceneSkybox>
 			<AgentProperties>
-	 			<SpaceType>CONTINUOUS</SpaceType>			
 				<EnvironmentDefinesInitialLocation>true</EnvironmentDefinesInitialLocation>
 				<RotateAnimationTowardsMovement>true</RotateAnimationTowardsMovement>
 				<RotateAnimationVertically>false</RotateAnimationVertically>
@@ -536,7 +534,7 @@ import java.util.*;]]></Import>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[100]]></Code>
+							<Code><![CDATA[5000]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1611406082135</Id>
@@ -2962,7 +2960,6 @@ import java.util.*;]]></Import>
 		<ActiveObjectClass>
 			<Id>1611404965485</Id>
 			<Name><![CDATA[phone]]></Name>
-			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1611404965483</Id>
@@ -2981,7 +2978,6 @@ import java.util.*;]]></Import>
 			<SceneBackgroundColor/>
 			<SceneSkybox>null</SceneSkybox>
 			<AgentProperties>
-	 			<SpaceType>CONTINUOUS</SpaceType>			
 				<EnvironmentDefinesInitialLocation>true</EnvironmentDefinesInitialLocation>
 				<RotateAnimationTowardsMovement>true</RotateAnimationTowardsMovement>
 				<RotateAnimationVertically>false</RotateAnimationVertically>
@@ -6047,7 +6043,6 @@ return dist_est;]]></Body>
 		<ActiveObjectClass>
 			<Id>1619178910712</Id>
 			<Name><![CDATA[rescue_team]]></Name>
-			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1619178910710</Id>
@@ -6066,7 +6061,6 @@ return dist_est;]]></Body>
 			<SceneBackgroundColor/>
 			<SceneSkybox>null</SceneSkybox>
 			<AgentProperties>
-	 			<SpaceType>CONTINUOUS</SpaceType>			
 				<EnvironmentDefinesInitialLocation>true</EnvironmentDefinesInitialLocation>
 				<RotateAnimationTowardsMovement>true</RotateAnimationTowardsMovement>
 				<RotateAnimationVertically>false</RotateAnimationVertically>
@@ -6521,7 +6515,6 @@ return dist_est;]]></Body>
 		<ActiveObjectClass>
 			<Id>1619179044383</Id>
 			<Name><![CDATA[node]]></Name>
-			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1619179044381</Id>
@@ -6540,7 +6533,6 @@ return dist_est;]]></Body>
 			<SceneBackgroundColor/>
 			<SceneSkybox>null</SceneSkybox>
 			<AgentProperties>
-	 			<SpaceType>CONTINUOUS</SpaceType>			
 				<EnvironmentDefinesInitialLocation>true</EnvironmentDefinesInitialLocation>
 				<RotateAnimationTowardsMovement>true</RotateAnimationTowardsMovement>
 				<RotateAnimationVertically>false</RotateAnimationVertically>
@@ -7648,7 +7640,6 @@ return dist_est;]]></Body>
 		<ActiveObjectClass>
 			<Id>1623832902201</Id>
 			<Name><![CDATA[gcsp_nodes]]></Name>
-			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1623832902199</Id>
@@ -7667,7 +7658,6 @@ return dist_est;]]></Body>
 			<SceneBackgroundColor/>
 			<SceneSkybox>null</SceneSkybox>
 			<AgentProperties>
-	 			<SpaceType>CONTINUOUS</SpaceType>			
 				<EnvironmentDefinesInitialLocation>true</EnvironmentDefinesInitialLocation>
 				<RotateAnimationTowardsMovement>true</RotateAnimationTowardsMovement>
 				<RotateAnimationVertically>false</RotateAnimationVertically>
@@ -8750,7 +8740,6 @@ return dist_est;]]></Body>
 		<ActiveObjectClass>
 			<Id>1630581416898</Id>
 			<Name><![CDATA[gNB]]></Name>
-			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1630581416896</Id>
@@ -8769,7 +8758,6 @@ return dist_est;]]></Body>
 			<SceneBackgroundColor/>
 			<SceneSkybox>null</SceneSkybox>
 			<AgentProperties>
-	 			<SpaceType>CONTINUOUS</SpaceType>			
 				<EnvironmentDefinesInitialLocation>true</EnvironmentDefinesInitialLocation>
 				<RotateAnimationTowardsMovement>true</RotateAnimationTowardsMovement>
 				<RotateAnimationVertically>false</RotateAnimationVertically>
@@ -10437,7 +10425,6 @@ if(main.v2_random_cost_based==true)//localization algo type 2	//v2 random cost b
 		<ActiveObjectClass>
 			<Id>1630591050613</Id>
 			<Name><![CDATA[success_emerg_call]]></Name>
-			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1630591050611</Id>
@@ -10456,7 +10443,6 @@ if(main.v2_random_cost_based==true)//localization algo type 2	//v2 random cost b
 			<SceneBackgroundColor/>
 			<SceneSkybox>null</SceneSkybox>
 			<AgentProperties>
-	 			<SpaceType>CONTINUOUS</SpaceType>			
 				<EnvironmentDefinesInitialLocation>true</EnvironmentDefinesInitialLocation>
 				<RotateAnimationTowardsMovement>true</RotateAnimationTowardsMovement>
 				<RotateAnimationVertically>false</RotateAnimationVertically>
@@ -10882,7 +10868,6 @@ if(main.v2_random_cost_based==true)//localization algo type 2	//v2 random cost b
 		<SimulationExperiment ActiveObjectClassId="1611404922984">
 			<Id>1611404922986</Id>
 			<Name><![CDATA[Simulation]]></Name>
-			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
 			<CommandLineArguments><![CDATA[]]></CommandLineArguments>
 			<MaximumMemory>6000</MaximumMemory>
 			<RandomNumberGenerationType>randomSeed</RandomNumberGenerationType>
@@ -11023,7 +11008,6 @@ if(main.v2_random_cost_based==true)//localization algo type 2	//v2 random cost b
 		<OptimizationExperiment ActiveObjectClassId="1611404922984">
 			<Id>1621705273257</Id>
 			<Name><![CDATA[Optimization]]></Name>
-			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
 			<CommandLineArguments><![CDATA[]]></CommandLineArguments>
 			<MaximumMemory>512</MaximumMemory>
 			<RandomNumberGenerationType>fixedSeed</RandomNumberGenerationType>
@@ -11179,7 +11163,6 @@ if(main.v2_random_cost_based==true)//localization algo type 2	//v2 random cost b
 		<ParamVariationExperiment ActiveObjectClassId="1611404922984">
 			<Id>1619961402265</Id>
 			<Name><![CDATA[paravariation]]></Name>
-			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
 			<CommandLineArguments><![CDATA[]]></CommandLineArguments>
 			<MaximumMemory>64000</MaximumMemory>
 			<RandomNumberGenerationType>randomSeed</RandomNumberGenerationType>
